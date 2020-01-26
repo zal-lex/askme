@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :questions
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
-  validates :email, format: { with: /.+@.+\..+/i }
+  validates :email, format: { with: /.+@.+\..+/ }
   validates_length_of :username, maximum: 40, message: "less than 40 if you don't mind"
   validates :username, format: { with: /\A\w+\z/ }
 

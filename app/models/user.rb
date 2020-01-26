@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  before_validation :normalized_case
   before_save :encrypt_password
 
   validates :email, :username, presence: true, uniqueness: true
@@ -38,5 +39,10 @@ class User < ApplicationRecord
         OpenSSL::PKCS5.pbkdf2_hmac(self.password, self.password_salt, ITERATIONS, DIGEST.length, DIGEST)
       )
     end
+  end
+
+  def normalized_case
+    self.username.downcase!
+    self.email.downcase!
   end
 end

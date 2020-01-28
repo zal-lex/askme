@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_090627) do
     t.string "avatar_url"
     t.integer "username_id"
     t.integer "email_id"
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["username"], name: "index_users_on_username"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "questions", "users"

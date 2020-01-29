@@ -3,6 +3,7 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+  
   attr_accessor :password
 
   has_many :questions

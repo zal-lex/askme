@@ -44,9 +44,27 @@ class UsersController < ApplicationController
     # Болванка вопросов для пользователя
     @questions = [
       Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2016')),
-      Question.new(
-        text: 'В чем смысл жизни?', created_at: Date.parse('27.03.2016')
-      )
+      Question.new(text: 'В чем смысл жизни?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Какой у тебя рост?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Отку да ты?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Где учился?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Где работал?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Бывал на море?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'А в горах?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Нырял с аквалангом?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Прыгал с парашютом?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Сколько продержишься под водой?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Катаешь на сноуборде?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Любимое блюдо?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Любимый алкогольный напиток?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Любимый безалкогольный напиток?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Какие языки программирования знаешь?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'А CSS и JS знаешь?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'В Rspec умеешь?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Git и GitHub освоил?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Коварный вопрос: что такое SCSS?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'ThinkPad или MacBook?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Просто контрольный: android или ios?', created_at: Date.parse('27.03.2016'))
     ]
 
     # Болванка для нового вопроса

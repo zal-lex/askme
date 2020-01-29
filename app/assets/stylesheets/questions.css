@@ -41,3 +41,8 @@
 .question-actions a {
   margin-left: 10px;
 }
+
+.question-count {
+  font-size: 20px;
+  font-weight: bold;
+}

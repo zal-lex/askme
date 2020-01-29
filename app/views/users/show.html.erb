@@ -23,6 +23,11 @@
     <%# Используем встроенный в rails хелпер link_to %>
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
   </div>
+
+  <div class="stat">
+    <div class="question-count"><%= @questions.count %></div>
+    <div><%= "#{inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов')}" %></div>
+  </div>
 </div>
 
 <%# Блок с формой для задавания пользователю вопроса %>

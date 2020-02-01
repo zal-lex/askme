@@ -11,9 +11,9 @@ module ApplicationHelper
     end
   end
   # Этот метод будет склонять слова. Для примера используем слово "енот"
-	def inclination(number, enot, enota, enotov)
-	  # Если ничего не ввели или ввели не число, считаем, что ввели 0
-	  if (number == nil || !number.is_a?(Numeric))
+  def inclination(number, enot, enota, enotov)
+  # Если ничего не ввели или ввели не число, считаем, что ввели 0
+    if (number == nil || !number.is_a?(Numeric))
 	    number = 0
 	  end
 

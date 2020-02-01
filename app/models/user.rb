@@ -7,7 +7,7 @@ class User < ApplicationRecord
   attr_accessor :password
 
   has_many :questions
-  before_validation :normalized_case
+  before_validation :normalized_case  
   before_save :encrypt_password
   validates :email, :username, presence: true, uniqueness: true
   validates :email, format: { with: /.+@.+\..+/ }

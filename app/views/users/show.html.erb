@@ -30,16 +30,16 @@
 
   <div class="stat container">
     <div class="column-1-3">
-      <div class="question-count"><%= @questions.where(answer: nil).count %></div>
+      <div class="question-count"><%= @questions_count %></div>
+      <div><%= "#{inclination(@questions_count, 'вопрос', 'вопроса', 'вопросов')}" %></div>
+    </div>
+    <div class="column-1-3">
+      <div class="question-count"><%= @unanswered %></div>
       <div>без ответа</div>
     </div>
     <div class="column-1-3">
-      <div class="question-count"><%= @questions.count %></div>
-      <div><%= "#{inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов')}" %></div>
-    </div>
-    <div class="column-1-3">
-      <div class="question-count"><%= @questions.where.not(answer: nil).count %></div>
-      <div><%= "#{inclination(@questions.where.not(answer: nil).count, 'ответ', 'ответа', 'ответов')}" %></div>
+      <div class="question-count"><%= @answered %></div>
+      <div>с ответом</div>
     </div>
   </div>
 </div>

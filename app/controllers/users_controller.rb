@@ -47,9 +47,9 @@ class UsersController < ApplicationController
 
     # Считаем общее количество вопросов, количество отвеченных и количество 
     # не отвеченных вопросов.
-    @questions_count = @user.questions.count
-    @unanswered = @user.questions.where(answer: nil).count
-    @answered = @user.questions.where.not(answer: nil).count
+    @questions_count = @questions.count
+    @unanswered = @questions.where(answer: nil).count
+    @answered = @questions_count - @unanswered
 
   end
 

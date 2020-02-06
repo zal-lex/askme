@@ -7,12 +7,13 @@ class User < ApplicationRecord
   attr_accessor :password
 
   has_many :questions
-  before_validation :normalized_case  
+  before_validation :normalized_case
   before_save :encrypt_password
   validates :email, :username, presence: true, uniqueness: true
   validates :email, format: { with: /.+@.+\..+/ }
   validates :username, length: { maximum: 40 }, format: { with: /\A\w+\z/ }
   validates :password, presence: true, on: :create, confirmation: true
+  validates :color_code, format: { with: /\A(|\#(\d|[a-z]){6};)\z/ }
 
   def self.authenticate(email, password)
     user = find_by(email: email)

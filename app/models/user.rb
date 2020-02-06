@@ -3,6 +3,9 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+  REGEX_EMAIL = '.+@.+\..+'
+  REGEX_USERNAME = '\A\w+\z'
+  REGEX_COLOR_CODE = '\A(|\#(\d|[a-f]|[A-F]){6})\z'
   
   attr_accessor :password
 
@@ -10,10 +13,10 @@ class User < ApplicationRecord
   before_validation :normalized_case
   before_save :encrypt_password
   validates :email, :username, presence: true, uniqueness: true
-  validates :email, format: { with: /.+@.+\..+/ }
-  validates :username, length: { maximum: 40 }, format: { with: /\A\w+\z/ }
+  validates :email, format: { with: /#{REGEX_EMAIL}/ }
+  validates :username, length: { maximum: 40 }, format: { with: /#{REGEX_USERNAME}/ }
   validates :password, presence: true, on: :create, confirmation: true
-  validates :color_code, format: { with: /\A(|\#(\d|[a-z]){6})\z/ }
+  validates :color_code, format: { with: /#{REGEX_COLOR_CODE}/ }
 
   def self.authenticate(email, password)
     user = find_by(email: email)

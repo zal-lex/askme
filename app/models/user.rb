@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :email, format: { with: /.+@.+\..+/ }
   validates :username, length: { maximum: 40 }, format: { with: /\A\w+\z/ }
   validates :password, presence: true, on: :create, confirmation: true
-  validates :color_code, format: { with: /\A(|\#(\d|[a-z]){6};)\z/ }
+  validates :color_code, format: { with: /\A(|\#(\d|[a-z]){6})\z/ }
 
   def self.authenticate(email, password)
     user = find_by(email: email)

@@ -9,12 +9,12 @@ class User < ApplicationRecord
   attr_accessor :password
 
   has_many :questions
-  before_validation :normalized_case
   before_save :encrypt_password
-  validates :email, :username, presence: true, uniqueness: true
+  validates :email, :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, format: { with: /#{REGEX_EMAIL}/ }
   validates :username, length: { maximum: 40 }, format: { with: /#{REGEX_USERNAME}/ }
   validates :password, presence: true, on: :create, confirmation: true
+  after_validation :normalized_case
 
   def self.authenticate(email, password)
     user = find_by(email: email)

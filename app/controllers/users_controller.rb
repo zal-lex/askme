@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: [:index, :create, :new, :destroy]
-  before_action :authorize_user, except: [:index, :new, :create, :show, :destroy]
+  before_action :load_user, except: [:index, :create, :new]
+  before_action :authorize_user, except: [:index, :new, :create, :show]
 
   def index
     @users = User.all
@@ -55,6 +55,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # @user.destroy
+    User.find(params[:id]).destroy
     session[:user_id] = nil
     redirect_to root_url, notice: 'Ваш профиль удалён :('
   end
@@ -70,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
+    params.require(:user).permit(:id, :email, :password, :password_confirmation,
                                  :name, :username, :avatar_url, :color_code)
   end
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: [:index, :create, :new]
-  before_action :authorize_user, except: [:index, :new, :create, :show]
+  before_action :load_user, except: [:index, :create, :new, :destroy]
+  before_action :authorize_user, except: [:index, :new, :create, :show, :destroy]
 
   def index
     @users = User.all.order(id: :desc)
@@ -52,6 +52,11 @@ class UsersController < ApplicationController
     @unanswered = @questions.where(answer: nil).count
     @answered = @questions_count - @unanswered
 
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: 'Ваш профиль удалён :('
   end
 
   private

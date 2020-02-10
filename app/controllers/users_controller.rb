@@ -54,6 +54,12 @@ class UsersController < ApplicationController
 
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: 'Ваш профиль удалён :('
+  end
+
   private
 
   def authorize_user
@@ -65,7 +71,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
+    params.require(:user).permit(:id, :email, :password, :password_confirmation,
                                  :name, :username, :avatar_url, :color_code)
   end
 end

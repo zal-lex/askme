@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with: REGEX_USERNAME }
   validates :password, presence: true, on: :create, confirmation: true
   validates :color_code, format: { with: REGEX_COLOR }, allow_blank: true
+  scope :sorted, -> { order(id: :desc) }
 
   def self.authenticate(email, password)
     user = find_by(email: email)

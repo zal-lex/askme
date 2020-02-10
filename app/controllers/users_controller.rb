@@ -55,8 +55,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # @user.destroy
-    User.find(params[:id]).destroy
+    @user.destroy
     session[:user_id] = nil
     redirect_to root_url, notice: 'Ваш профиль удалён :('
   end

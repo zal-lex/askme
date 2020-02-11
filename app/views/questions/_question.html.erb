@@ -17,6 +17,15 @@
       </div>
     <% end %>
 
+    <div class="question-author">
+      Автор:
+      <% if question.author.present? %>
+        <%= link_to "@#{question.author.username}", user_path(question.author) %>
+      <% else %>
+        аноним
+      <% end %>
+    </div>
+
     <div class="question-date">
       <%= question.created_at.strftime('%d %b %H:%M') %>
     </div>

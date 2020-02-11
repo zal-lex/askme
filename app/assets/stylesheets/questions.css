@@ -27,6 +27,13 @@
 }
 
 .question-date {
+  text-align: right;
+  color: #a0a0a0;
+  font-size: 12px;
+}
+
+.question-author {
+  float: left;
   color: #a0a0a0;
   font-size: 12px;
 }

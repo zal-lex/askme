@@ -55,9 +55,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.questions.each do |question|
-      question.destroy
-    end
     @user.destroy
     session[:user_id] = nil
     redirect_to root_url, notice: 'Ваш профиль удалён :('

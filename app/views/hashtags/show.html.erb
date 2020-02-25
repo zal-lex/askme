@@ -1,0 +1,26 @@
+<%# В шаблоне show мы пишем html-код для вывода внутреннго содержимого %>
+<%# страницы пользователя, которая будет показана по адресу /hashtag/1 %>
+
+<%# Блок с названием hashtag-а %>
+<div class="user-header text-center" style="background: #00948a;">
+  <h1 class="title-medium">
+    <%# Выводим хештэг %>
+    <%= @hashtag.name %>
+  </h1>
+</div>
+
+<%# Блок со списком вопросов к пользователю %>
+<div>
+  <div class="user-questions buffer-both">
+    <div class="questions-list">
+      <%# Обратите внимание, как мы делаем цикл по всем вопросам, точно %>
+      <%# также, как мы делали циклы в ruby %>
+      <% @questions.each do |question| %>
+        <%# Мы рисуем здесь для кажого вопроса в списке вопросов фрагмент %>
+        <%# (паршал), передавая в него текущий вопрос. Это очень похоже на %>
+        <%# вызов метода в ruby %>
+        <%= render partial: 'questions/question', object: question %>
+      <% end %>
+    </div>
+  </div>
+</div>

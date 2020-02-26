@@ -1,4 +1,10 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+.hashtags {
+  font-size: 12px;
+  border-top: 1px solid #D9E6E5;
+  text-align: left;
+  padding: 10px 15px;
+}
+
+.hashtags a {
+  margin-left: 3px;
+}

@@ -31,6 +31,14 @@
     </div>
   </div>
 
+  <% if question.hashtags %>
+    <div class="hashtags">
+      <% question.hashtags.each do |tag| %>
+        <%= link_to tag.name, hashtag_path(tag) %>
+      <% end %>
+    </div>
+  <% end %>
+
   <%# Если адресат вопроса — текущий пользователь, он может редактировать вопрос %>
   <%# и отвечать на него %>
   <% if question.user == current_user %>

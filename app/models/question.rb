@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  REGEX_HASHTAG = /#[a-zа-я0-9_]+/
+  REGEX_HASHTAG = /#[A-zА-я0-9_]+/
 
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
@@ -12,11 +12,12 @@ class Question < ApplicationRecord
     answer ? (full_str = text + ' ' + answer) : full_str = text
     full_str.scan(REGEX_HASHTAG).each do |substr|
       next if substr.length > 25
-      hashtag = Hashtag.find_by(name: substr)
+      tag = substr.downcase
+      hashtag = Hashtag.find_by(name: tag)
       if hashtag
         hashtag.touch
       else
-        hashtag = Hashtag.new(name: substr)
+        hashtag = Hashtag.new(name: tag)
         hashtag.save!
       end
       hashtags << hashtag

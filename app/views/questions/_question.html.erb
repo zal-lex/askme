@@ -32,7 +32,7 @@
   </div>
 
   <% if question.hashtags %>
-    <div class="hashtags">
+    <div class="hashtags text-medium">
       <% question.hashtags.each do |tag| %>
         <%= link_to tag.name, hashtag_path(tag) %>
       <% end %>

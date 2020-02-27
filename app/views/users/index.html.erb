@@ -18,4 +18,11 @@
         </div>
       </div>
   <% end %>
+
+  <div class="text-center text-medium hashtags buffer-top">
+    <% @hashtags.each do |tag| %>
+      <%= link_to tag.name, hashtag_path(tag) %>
+    <% end %>
+  </div>
+
 </div>

@@ -1,5 +1,4 @@
 class Question < ApplicationRecord
-  REGEX_HASHTAG = /#[A-zА-я0-9_]+/
 
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
@@ -10,7 +9,7 @@ class Question < ApplicationRecord
 
   def set_hashtags
     answer ? (full_str = text + ' ' + answer) : full_str = text
-    full_str.scan(REGEX_HASHTAG).each do |substr|
+    full_str.scan(Hashtag::REGEX_HASHTAG).each do |substr|
       next if substr.length > 25
       tag = substr.downcase
       hashtag = Hashtag.find_by(name: tag)

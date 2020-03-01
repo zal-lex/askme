@@ -8,18 +8,8 @@ class Question < ApplicationRecord
   validates :text, presence: true, length: { maximum: 255 }
 
   def set_hashtags
-    answer ? (full_str = text + ' ' + answer) : full_str = text
-    full_str.scan(Hashtag::REGEX_HASHTAG).each do |substr|
-      next if substr.length > 25
-      tag = substr.downcase
-      hashtag = Hashtag.find_by(name: tag)
-      if hashtag
-        hashtag.touch
-      else
-        hashtag = Hashtag.new(name: tag)
-        hashtag.save!
-      end
-      hashtags << hashtag
+    "#{text} #{answer}".downcase.scan(Hashtag::REGEX_HASHTAG).each do |substr|
+      hashtags << Hashtag.find_or_create_by(name: substr)
     end
   end
 end

@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   has_many :hashtag_questions, dependent: :destroy
   has_many :hashtags, through: :hashtag_questions
   before_save :reset_hashtags
-  after_save :set_hashtags
+  after_commit :set_hashtags, on: %i[create update]
   validates :text, presence: true, length: { maximum: 255 }
 
   def reset_hashtags

@@ -18,7 +18,7 @@
     <div class="form-field">
       <%= f.label :text, 'Вопрос', class: 'form-label' %>
       <%= f.text_area :text, class: 'form-textarea' %>
-    </div>
+    </div>recaptcha_v3
 
     <%# Простая авторизация - может ли текущий юзер править вопрос? %>
     <% if current_user.present? && current_user == @question.user %>
@@ -28,7 +28,7 @@
       </div>
     <% end %>
 
-    <%= recaptcha_tags unless current_user.present? %>
+    <%= recaptcha_v3 unless current_user.present? %>
 
     <div class="form-action buffer-both">
       <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>

@@ -1,5 +1,5 @@
 class Hashtag < ApplicationRecord
-  REGEX_HASHTAG = /#[A-zА-я0-9_]+/
+  REGEX_HASHTAG = /#[A-zА-я0-9_]+/.freeze
 
   has_many :hashtag_questions
   has_many :questions, through: :hashtag_questions

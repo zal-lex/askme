@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: [:index, :create, :new]
-  before_action :authorize_user, except: [:index, :new, :create, :show]
+  before_action :load_user, except: %i[index create new]
+  before_action :authorize_user, except: %i[index new create show]
 
   def index
     @users = User.sorted
@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     redirect_to root_url, alert: 'Вы уже залогинены' if current_user.present?
@@ -24,16 +23,15 @@ class UsersController < ApplicationController
       redirect_to root_url, notice: 'Пользователь успешно создан!'
     else
       render 'new'
-    end  
+    end
   end
 
   def update
-
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Данные обновлены'
     else
       render 'edit'
-    end  
+    end
   end
 
   def show
@@ -47,12 +45,11 @@ class UsersController < ApplicationController
     # @user.questions.
     @new_question = @user.questions.build
 
-    # Считаем общее количество вопросов, количество отвеченных и количество 
+    # Считаем общее количество вопросов, количество отвеченных и количество
     # не отвеченных вопросов.
     @questions_count = @questions.count
     @unanswered = @questions.where(answer: nil).count
     @answered = @questions_count - @unanswered
-
   end
 
   def destroy

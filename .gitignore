@@ -19,6 +19,7 @@
 !/tmp/.keep
 .idea
 .ruby-gemset
+.rubocop.yml
 
 # Ignore uploaded files in development.
 /storage/*

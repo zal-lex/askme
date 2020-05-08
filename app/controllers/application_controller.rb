@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-	helper_method :current_user
+  helper_method :current_user
 
-	private
+  private
 
   # Метод контроллера, достающий текущего юзера из базы по данным аутентификации
   # в сессии.

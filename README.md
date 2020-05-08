@@ -1,24 +1,27 @@
-# README
+*Заметка:*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  - *Проект задеплоен на heroku.com.*
 
-Things you may want to cover:
+  - *Для борьбы со спамом прикручена Google reCAPTCHA v2*
 
-* Ruby version
+# Установка
 
-* System dependencies
+*Для работы приложения необходим Ruby версии 2.6.3*
 
-* Configuration
+В проекте используется `bundler`, поэтому в первую очередь нужно установить этот гем (если его у вас нет):
 
-* Database creation
+```
+gem install bundler
+```
 
-* Database initialization
+Затем установите все необходимые зависимости:
 
-* How to run the test suite
+```
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Далее необходимо накатить миграции:
 
-* Deployment instructions
-
-* ...
+```
+bundle exec rake db:migrate
+```
